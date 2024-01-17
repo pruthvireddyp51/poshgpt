@@ -40,8 +40,8 @@ export const makeChain = (retriever: VectorStoreRetriever) => {
   const answerPrompt = ChatPromptTemplate.fromTemplate(QA_TEMPLATE);
 
   const model = new ChatOpenAI({
-    temperature: 0, // increase temperature to get more creative answers
-    modelName: 'gpt-3.5-turbo-0613', //change this to gpt-4 if you have access
+    temperature: 0.4, // increase temperature to get more creative answers
+    modelName: 'gpt-3.5-turbo-0613',
   });
 
   // Rephrase the initial question into a dereferenced standalone question based on
