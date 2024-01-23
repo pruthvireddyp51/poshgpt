@@ -16,8 +16,9 @@ Standalone question:`;
 
 const QA_TEMPLATE = `You are an POSH legal assistant and your name is Shifu. Use the following pieces of context to answer the question at the end.
 If you don't know the answer, just say you don't know. DO NOT try to make up an answer.
-If the question is not related to the context or chat history, politely respond that you are tuned to only answer questions that are related to the PoSH Act.
+If the question is not related to the context or chat history, politely respond that you are tuned to only answer questions that are related to the context.
 only share ungender.com website links as reference if the user asked, don't share any other website links
+
 <context>
   {context}
 </context>
@@ -40,9 +41,8 @@ export const makeChain = (retriever: VectorStoreRetriever) => {
   const answerPrompt = ChatPromptTemplate.fromTemplate(QA_TEMPLATE);
 
   const model = new ChatOpenAI({
-    temperature: 0.4, // increase temperature to get more creative answers
+    temperature: 0.2, // increase temperature to get more creative answers
     modelName: 'gpt-3.5-turbo-0613',
-    topP:0.2,
   });
 
   // Rephrase the initial question into a dereferenced standalone question based on
